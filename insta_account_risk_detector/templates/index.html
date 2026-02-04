@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Instagram Account Risk Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h2>Instagram Account Risk Detection</h2>
+
+<form method="post">
+
+<h3>Basic Information</h3>
+
+<label>Username *</label><br>
+<input type="text" name="username"
+       value="{{ request.form.username if request.method=='POST' }}" required><br>
+
+<label>Account Visibility</label><br>
+<select name="visibility">
+    <option value="">Unknown</option>
+    <option value="public" {% if request.form.visibility=='public' %}selected{% endif %}>Public</option>
+    <option value="private" {% if request.form.visibility=='private' %}selected{% endif %}>Private</option>
+</select><br>
+
+<label>Verified Account?</label><br>
+<select name="verified">
+    <option value="no">No</option>
+    <option value="yes" {% if request.form.verified=='yes' %}selected{% endif %}>Yes</option>
+</select><br>
+
+<hr>
+
+<h3>Profile Details (Optional)</h3>
+
+<label>Followers</label><br>
+<input type="number" name="followers"
+       value="{{ request.form.followers }}"><br>
+
+<label>Following</label><br>
+<input type="number" name="following"
+       value="{{ request.form.following }}"><br>
+
+<label>Total Posts</label><br>
+<input type="number" name="posts"
+       value="{{ request.form.posts }}"><br>
+
+<label>Account Age (days)</label><br>
+<input type="number" name="account_age"
+       value="{{ request.form.account_age }}"><br>
+
+<hr>
+
+<h3>Profile Signals</h3>
+
+<label>Profile Picture</label><br>
+<select name="profile_pic">
+    <option value="">Unknown</option>
+    <option value="normal" {% if request.form.profile_pic=='normal' %}selected{% endif %}>Present & Normal</option>
+    <option value="suspicious" {% if request.form.profile_pic=='suspicious' %}selected{% endif %}>Suspicious</option>
+    <option value="absent" {% if request.form.profile_pic=='absent' %}selected{% endif %}>Absent</option>
+</select><br>
+
+<label>Bio</label><br>
+<textarea name="bio">{{ request.form.bio }}</textarea><br>
+
+<label>Bio Links</label><br>
+<select name="bio_links">
+    <option value="">Unknown</option>
+    <option value="none" {% if request.form.bio_links=='none' %}selected{% endif %}>No Links</option>
+    <option value="genuine" {% if request.form.bio_links=='genuine' %}selected{% endif %}>Genuine Links</option>
+    <option value="suspicious" {% if request.form.bio_links=='suspicious' %}selected{% endif %}>Suspicious Links</option>
+</select><br>
+
+<label>Suspicious DMs Observed?</label><br>
+<select name="dm_activity">
+    <option value="">Unknown</option>
+    <option value="yes" {% if request.form.dm_activity=='yes' %}selected{% endif %}>Yes</option>
+    <option value="no" {% if request.form.dm_activity=='no' %}selected{% endif %}>No</option>
+</select><br>
+
+<br>
+<button type="submit">Analyze Account</button>
+
+</form>
+
+{% if result %}
+<hr>
+<h3>Assessment Result</h3>
+
+<p><strong>Risk Level:</strong> {{ result.risk_level }}</p>
+<p><strong>Risk Score:</strong> {{ result.risk_score }}%</p>
+<p>
+<strong>Confidence:</strong>
+<span class="badge {{ result.confidence_label|lower }}">
+    {{ result.confidence_label }} ({{ result.confidence }})
+</span>
+</p>
+
+
+{% if result.note %}
+<p><em>{{ result.note }}</em></p>
+{% endif %}
+
+{% if result.indicators %}
+<p><strong>Indicators:</strong></p>
+<ul>
+    {% for i in result.indicators %}
+    <li>{{ i }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endif %}
+
+{% if history %}
+<hr>
+<h3>Recent Checks (Last 5)</h3>
+<ul>
+    {% for h in history %}
+    <li>
+        <strong>{{ h.username }}</strong> →
+        {{ h.risk_level }} ({{ h.risk_score }}%, {{ h.confidence }})
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% if error %}
+<p style="color:red;"><strong>{{ error }}</strong></p>
+{% endif %}
+<p><em>
+This tool does not determine whether an account is real or fake.
+It highlights risk patterns commonly associated with scams or impersonation
+to help users make safer decisions.
+</em></p>
+
+
+</body>
+</html>
