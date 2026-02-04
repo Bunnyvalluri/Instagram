@@ -1,6 +1,6 @@
 import { useState, FormEvent } from 'react'
 import axios from 'axios'
-import { AnalysisResult } from '../App'
+import { AnalysisResult } from '../types'
 
 interface AnalysisFormProps {
     onAnalysisComplete: (result: AnalysisResult) => void

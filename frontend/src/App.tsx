@@ -8,17 +8,7 @@ import AnalysisForm from './components/AnalysisForm'
 import ResultDashboard from './components/ResultDashboard'
 import Footer from './components/Footer'
 import LoadingSpinner from './components/LoadingSpinner'
-
-export interface AnalysisResult {
-    username: string
-    risk_score: number
-    risk_level: string
-    confidence: number
-    confidence_label: string
-    reasons: string[]
-    recommendations: string[]
-    timestamp: string
-}
+import { AnalysisResult } from './types'
 
 function App() {
     const [result, setResult] = useState<AnalysisResult | null>(null)

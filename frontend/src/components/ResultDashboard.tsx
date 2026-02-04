@@ -1,4 +1,4 @@
-import { AnalysisResult } from '../App'
+import { AnalysisResult } from '../types'
 
 interface ResultDashboardProps {
     result: AnalysisResult
@@ -6,11 +6,7 @@ interface ResultDashboardProps {
 }
 
 export default function ResultDashboard({ result, onNewAnalysis }: ResultDashboardProps) {
-    const getRiskColor = (level: string) => {
-        if (level === 'High Risk') return 'from-red-500 to-red-700'
-        if (level === 'Moderate Risk') return 'from-yellow-500 to-orange-600'
-        return 'from-green-500 to-green-700'
-    }
+
 
     const getRiskBadgeColor = (level: string) => {
         if (level === 'High Risk') return 'bg-red-500/20 text-red-300 border-red-500/50'
