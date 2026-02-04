@@ -5,6 +5,12 @@ from typing import Optional, List
 from datetime import datetime
 import uvicorn
 
+import sys
+import os
+
+# Ensure the backend directory is in the python path
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 from risk_engine import calculate_risk_score, get_risk_reasons
 from database import init_db, save_analysis, get_recent_analyses
 
