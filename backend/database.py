@@ -7,7 +7,11 @@ from datetime import datetime
 from typing import List, Dict, Any
 import os
 
-DB_PATH = os.path.join(os.path.dirname(__file__), "risk_detector.db")
+# Check if running on Vercel (read-only file system)
+if os.environ.get("VERCEL"):
+    DB_PATH = "/tmp/risk_detector.db"
+else:
+    DB_PATH = os.path.join(os.path.dirname(__file__), "risk_detector.db")
 
 
 def init_db():

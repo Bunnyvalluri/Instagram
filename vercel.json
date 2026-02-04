@@ -1,0 +1,15 @@
+{
+    "rewrites": [
+        {
+            "source": "/api/(.*)",
+            "destination": "/backend/main.py"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/frontend/index.html"
+        }
+    ],
+    "buildCommand": "cd frontend && npm install && npm run build",
+    "outputDirectory": "frontend/dist",
+    "framework": "vite"
+}

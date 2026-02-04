@@ -44,7 +44,7 @@ export default function AnalysisForm({ onAnalysisComplete, setLoading }: Analysi
             if (formData.bio_links) apiData.bio_links = formData.bio_links
             if (formData.dm_activity) apiData.dm_activity = formData.dm_activity
 
-            const response = await axios.post('http://127.0.0.1:8000/api/analyze', apiData)
+            const response = await axios.post('/api/analyze', apiData)
             onAnalysisComplete(response.data)
         } catch (error) {
             console.error('Analysis failed:', error)
