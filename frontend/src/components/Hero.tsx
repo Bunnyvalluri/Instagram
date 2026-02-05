@@ -1,8 +1,13 @@
+import { useState } from 'react'
+import VideoModal from './VideoModal'
+
 interface HeroProps {
     onGetStarted: () => void
 }
 
 export default function Hero({ onGetStarted }: HeroProps) {
+    const [isVideoOpen, setIsVideoOpen] = useState(false)
+
     return (
         <header className="relative overflow-hidden min-h-screen flex items-center justify-center section-spacing pt-32 pb-20" role="banner">
             {/* Animated background elements */}
@@ -71,7 +76,10 @@ export default function Hero({ onGetStarted }: HeroProps) {
                                 Start Free Analysis →
                             </span>
                         </button>
-                        <button className="btn-touch btn-mobile bg-slate-200/50 dark:bg-white/10 backdrop-blur-sm border-2 border-slate-300 dark:border-white/30 text-slate-700 dark:text-white rounded-2xl font-bold text-lg hover:bg-slate-200 dark:hover:bg-white/20 transition-apple active:scale-95 w-full sm:w-auto">
+                        <button
+                            onClick={() => setIsVideoOpen(true)}
+                            className="btn-touch btn-mobile bg-slate-200/50 dark:bg-white/10 backdrop-blur-sm border-2 border-slate-300 dark:border-white/30 text-slate-700 dark:text-white rounded-2xl font-bold text-lg hover:bg-slate-200 dark:hover:bg-white/20 transition-apple active:scale-95 w-full sm:w-auto"
+                        >
                             Watch Demo
                         </button>
                     </div>
@@ -93,6 +101,8 @@ export default function Hero({ onGetStarted }: HeroProps) {
                     </div>
                 </div>
             </div>
+
+            <VideoModal isOpen={isVideoOpen} onClose={() => setIsVideoOpen(false)} />
         </header>
     )
 }
