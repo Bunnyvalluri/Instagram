@@ -11,7 +11,7 @@ export default function VideoModal({ isOpen, onClose }: VideoModalProps) {
   const [activeSlide, setActiveSlide] = useState(0)
   const [showReplay, setShowReplay] = useState(false)
 
-  const timerRef = useRef<NodeJS.Timeout | null>(null)
+  const timerRef = useRef<any>(null)
 
   const TOTAL_DURATION = 14000 // 14 seconds
   const UPDATE_INTERVAL = 50 // ms

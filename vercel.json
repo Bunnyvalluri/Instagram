@@ -1,5 +1,5 @@
 {
-    "name": "fake-social-media",
+    "name": "fake-social-media-alpha",
     "rewrites": [
         {
             "source": "/api/(.*)",
