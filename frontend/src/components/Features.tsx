@@ -48,41 +48,38 @@ export default function Features() {
     ]
 
     return (
-        <section id="features" className="py-20 relative overflow-hidden">
-            {/* Background decoration */}
-            <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-0 left-0 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl"></div>
-            </div>
-
-            <div className="container mx-auto px-4 relative z-10">
-                {/* Section Header */}
-                <div className="text-center mb-16">
-                    <div className="inline-block bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-4">
-                        <span className="text-white/90 text-sm font-medium">✨ Powerful Features</span>
+        <section id="features" className="section-spacing">
+            <div className="container-mobile mx-auto max-w-7xl">
+                {/* Header */}
+                <div className="text-center mb-12 sm:mb-16 animate-fadeIn">
+                    <div className="inline-block bg-white/20 dark:bg-white/10 backdrop-blur-sm border border-white/30 rounded-full px-4 sm:px-6 py-2 mb-4 sm:mb-6">
+                        <span className="text-sm sm:text-base text-slate-900 dark:text-white font-semibold">✨ Features</span>
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-                        Everything You Need to Stay Safe
+                    <h2 className="text-3xl sm:text-huge-mobile font-black text-slate-900 dark:text-white mb-4 sm:mb-6 leading-tight">
+                        Powerful Protection,
+                        <br />
+                        <span className="gradient-text">Simple Interface</span>
                     </h2>
-                    <p className="text-xl text-white/70 max-w-2xl mx-auto">
-                        Comprehensive tools and features designed to protect you from Instagram scams and fraudulent accounts
+                    <p className="text-body-mobile text-slate-600 dark:text-white/70 max-w-3xl mx-auto px-4">
+                        Our AI-powered platform combines cutting-edge technology with user-friendly design
+                        to keep you safe from Instagram scams and fake accounts.
                     </p>
                 </div>
 
                 {/* Features Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                     {features.map((feature, index) => (
                         <div
                             key={index}
-                            className="glass rounded-2xl p-6 hover:bg-white/15 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl group"
+                            className="glass-mobile rounded-2xl p-6 sm:p-8 hover:bg-white/40 dark:hover:bg-white/15 transition-apple transform hover:scale-[1.02] hover:shadow-2xl group cursor-default"
                         >
-                            <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                            <div className="text-4xl sm:text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300 origin-left">
                                 {feature.icon}
                             </div>
-                            <h3 className="text-xl font-bold text-white mb-3">
+                            <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2 sm:mb-3">
                                 {feature.title}
                             </h3>
-                            <p className="text-white/70 leading-relaxed">
+                            <p className="text-sm sm:text-base text-slate-600 dark:text-white/70 leading-relaxed">
                                 {feature.description}
                             </p>
                         </div>
@@ -90,23 +87,23 @@ export default function Features() {
                 </div>
 
                 {/* Stats Section */}
-                <div className="mt-20 glass rounded-3xl p-8 md:p-12">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                        <div className="text-center">
-                            <div className="text-4xl md:text-5xl font-black text-white mb-2">50K+</div>
-                            <div className="text-white/70 font-medium">Accounts Analyzed</div>
+                <div className="mt-12 sm:mt-20 glass-mobile rounded-3xl p-6 sm:p-12">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                        <div className="text-center p-2">
+                            <div className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-1 sm:mb-2">50K+</div>
+                            <div className="text-xs sm:text-sm font-medium text-slate-500 dark:text-white/70">Accounts Analyzed</div>
                         </div>
-                        <div className="text-center">
-                            <div className="text-4xl md:text-5xl font-black text-white mb-2">98%</div>
-                            <div className="text-white/70 font-medium">Accuracy Rate</div>
+                        <div className="text-center p-2">
+                            <div className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-1 sm:mb-2">98%</div>
+                            <div className="text-xs sm:text-sm font-medium text-slate-500 dark:text-white/70">Accuracy Rate</div>
                         </div>
-                        <div className="text-center">
-                            <div className="text-4xl md:text-5xl font-black text-white mb-2">2.8s</div>
-                            <div className="text-white/70 font-medium">Avg Response Time</div>
+                        <div className="text-center p-2">
+                            <div className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-1 sm:mb-2">2.8s</div>
+                            <div className="text-xs sm:text-sm font-medium text-slate-500 dark:text-white/70">Avg Response Time</div>
                         </div>
-                        <div className="text-center">
-                            <div className="text-4xl md:text-5xl font-black text-white mb-2">24/7</div>
-                            <div className="text-white/70 font-medium">Always Available</div>
+                        <div className="text-center p-2">
+                            <div className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-1 sm:mb-2">24/7</div>
+                            <div className="text-xs sm:text-sm font-medium text-slate-500 dark:text-white/70">Always Available</div>
                         </div>
                     </div>
                 </div>

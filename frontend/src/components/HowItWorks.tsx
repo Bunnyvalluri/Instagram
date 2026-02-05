@@ -27,53 +27,53 @@ export default function HowItWorks() {
     ]
 
     return (
-        <section id="how-it-works" className="py-20 relative overflow-hidden">
+        <section id="how-it-works" className="section-spacing relative overflow-hidden">
             {/* Background decoration */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-1/2 left-1/4 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
             </div>
 
-            <div className="container mx-auto px-4 relative z-10">
+            <div className="container-mobile mx-auto relative z-10">
                 {/* Section Header */}
-                <div className="text-center mb-16">
-                    <div className="inline-block bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-4">
-                        <span className="text-white/90 text-sm font-medium">🔍 Simple Process</span>
+                <div className="text-center mb-12 sm:mb-16 animate-fadeIn">
+                    <div className="inline-block bg-slate-100 dark:bg-white/10 backdrop-blur-sm border border-slate-200 dark:border-white/20 rounded-full px-4 sm:px-6 py-2 mb-4 sm:mb-6">
+                        <span className="text-slate-700 dark:text-white/90 text-sm sm:text-base font-medium">🔍 Simple Process</span>
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
+                    <h2 className="text-3xl sm:text-huge-mobile font-black text-slate-900 dark:text-white mb-4 sm:mb-6">
                         How It Works
                     </h2>
-                    <p className="text-xl text-white/70 max-w-2xl mx-auto">
+                    <p className="text-body-mobile text-slate-600 dark:text-white/70 max-w-2xl mx-auto px-4">
                         Get comprehensive risk analysis in 4 simple steps. No Instagram login required.
                     </p>
                 </div>
 
                 {/* Steps */}
                 <div className="max-w-5xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                         {steps.map((step, index) => (
                             <div
                                 key={index}
-                                className="relative"
+                                className="relative group"
                             >
                                 {/* Connector line for desktop */}
                                 {index < steps.length - 1 && index % 2 === 0 && (
-                                    <div className="hidden md:block absolute top-1/2 left-full w-full h-0.5 bg-gradient-to-r from-white/20 to-transparent transform -translate-y-1/2 z-0"></div>
+                                    <div className="hidden md:block absolute top-1/2 left-full w-full h-0.5 bg-gradient-to-r from-slate-300 dark:from-white/20 to-transparent transform -translate-y-1/2 z-0"></div>
                                 )}
 
-                                <div className="glass rounded-2xl p-8 hover:bg-white/15 transition-all duration-300 transform hover:scale-105 relative z-10">
+                                <div className="glass-mobile rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:bg-white/40 dark:hover:bg-white/15 transition-apple transform hover:scale-[1.02] relative z-10 h-full">
                                     {/* Step Number */}
                                     <div className="flex items-start mb-4">
-                                        <div className="text-6xl mr-4">{step.icon}</div>
-                                        <div className="text-6xl font-black text-white/20">
+                                        <div className="text-4xl sm:text-6xl mr-3 sm:mr-4 transform group-hover:scale-110 transition-transform duration-300 origin-left">{step.icon}</div>
+                                        <div className="text-4xl sm:text-6xl font-black text-slate-200 dark:text-white/20">
                                             {step.number}
                                         </div>
                                     </div>
 
                                     {/* Content */}
-                                    <h3 className="text-2xl font-bold text-white mb-3">
+                                    <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2 sm:mb-3">
                                         {step.title}
                                     </h3>
-                                    <p className="text-white/70 leading-relaxed">
+                                    <p className="text-sm sm:text-base text-slate-600 dark:text-white/70 leading-relaxed">
                                         {step.description}
                                     </p>
                                 </div>
@@ -83,12 +83,12 @@ export default function HowItWorks() {
                 </div>
 
                 {/* CTA Section */}
-                <div className="mt-16 text-center">
-                    <div className="glass rounded-3xl p-8 md:p-12 max-w-3xl mx-auto">
-                        <h3 className="text-3xl font-bold text-white mb-4">
+                <div className="mt-12 sm:mt-16 text-center px-2">
+                    <div className="glass-mobile rounded-2xl sm:rounded-3xl p-8 sm:p-12 max-w-3xl mx-auto">
+                        <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-3 sm:mb-4">
                             Ready to Protect Yourself?
                         </h3>
-                        <p className="text-white/70 mb-6 text-lg">
+                        <p className="text-base sm:text-lg text-slate-600 dark:text-white/70 mb-6 sm:mb-8">
                             Start analyzing Instagram accounts for free. No registration required.
                         </p>
                         <button
@@ -97,7 +97,7 @@ export default function HowItWorks() {
                                     behavior: 'smooth'
                                 }) || window.scrollTo({ top: 0, behavior: 'smooth' })
                             }}
-                            className="bg-white text-purple-600 px-8 py-4 rounded-2xl font-bold text-lg shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105"
+                            className="btn-touch btn-mobile bg-purple-600 text-white dark:bg-white dark:text-purple-600 rounded-2xl font-bold text-lg shadow-2xl hover:shadow-purple-500/50 transition-apple hover:scale-105 active:scale-95 w-full sm:w-auto"
                         >
                             Start Free Analysis Now →
                         </button>

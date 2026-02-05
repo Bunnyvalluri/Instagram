@@ -62,26 +62,26 @@ export default function AnalysisForm({ onAnalysisComplete, setLoading }: Analysi
     }
 
     return (
-        <div className="glass rounded-3xl p-6 md:p-8">
-            <div className="mb-6">
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+        <div className="glass-mobile rounded-2xl sm:rounded-3xl p-6 sm:p-8 animate-fadeIn">
+            <div className="mb-6 sm:mb-8">
+                <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-2 sm:mb-3">
                     Check Instagram Account
                 </h2>
-                <p className="text-white/70">
+                <p className="text-sm sm:text-base text-slate-600 dark:text-white/70">
                     Fill in what you know about the account. Only username is required - more details = better accuracy.
                 </p>
-                <div className="mt-3 p-3 bg-blue-500/20 border border-blue-400/30 rounded-xl">
-                    <p className="text-blue-100 text-sm">
+                <div className="mt-4 p-4 bg-blue-500/10 dark:bg-blue-500/20 border border-blue-500/20 dark:border-blue-400/30 rounded-xl">
+                    <p className="text-blue-700 dark:text-blue-100 text-xs sm:text-sm leading-relaxed">
                         💡 <strong>Tip:</strong> You can find this info on the Instagram profile without following or messaging them.
                     </p>
                 </div>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-5" aria-label="Instagram account analysis form">
+            <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6" aria-label="Instagram account analysis form">
                 {/* Username - Required */}
                 <div>
-                    <label htmlFor="username" className="block text-white font-semibold mb-2">
-                        Instagram Username <span className="text-pink-400" aria-label="required">*</span>
+                    <label htmlFor="username" className="block text-slate-800 dark:text-white font-semibold mb-2 ml-1 text-sm sm:text-base">
+                        Instagram Username <span className="text-pink-500 dark:text-pink-400" aria-label="required">*</span>
                     </label>
                     <input
                         type="text"
@@ -93,17 +93,17 @@ export default function AnalysisForm({ onAnalysisComplete, setLoading }: Analysi
                         placeholder="example: @instagram or instagram"
                         aria-required="true"
                         aria-describedby="username-hint"
-                        className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                        className="w-full bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-xl px-4 py-3 sm:py-4 text-base text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                     />
-                    <p id="username-hint" className="text-white/60 text-sm mt-1">
+                    <p id="username-hint" className="text-slate-500 dark:text-white/60 text-xs sm:text-sm mt-2 ml-1">
                         Enter the Instagram username (with or without @)
                     </p>
                 </div>
 
                 {/* Stats Row */}
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
                     <div>
-                        <label htmlFor="followers" className="block text-white font-semibold mb-2 text-sm">Followers</label>
+                        <label htmlFor="followers" className="block text-slate-800 dark:text-white font-semibold mb-2 ml-1 text-sm">Followers</label>
                         <input
                             type="number"
                             id="followers"
@@ -111,140 +111,165 @@ export default function AnalysisForm({ onAnalysisComplete, setLoading }: Analysi
                             value={formData.followers}
                             onChange={handleChange}
                             placeholder="0"
-                            className="w-full bg-white/10 border border-white/20 rounded-xl px-3 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
+                            className="w-full bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-xl px-4 py-3 text-base text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
                         />
                     </div>
                     <div>
-                        <label className="block text-white font-semibold mb-2 text-sm">Following</label>
+                        <label className="block text-slate-800 dark:text-white font-semibold mb-2 ml-1 text-sm">Following</label>
                         <input
                             type="number"
                             name="following"
                             value={formData.following}
                             onChange={handleChange}
                             placeholder="0"
-                            className="w-full bg-white/10 border border-white/20 rounded-xl px-3 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
+                            className="w-full bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-xl px-4 py-3 text-base text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
                         />
                     </div>
                     <div>
-                        <label className="block text-white font-semibold mb-2 text-sm">Posts</label>
+                        <label className="block text-slate-800 dark:text-white font-semibold mb-2 ml-1 text-sm">Posts</label>
                         <input
                             type="number"
                             name="posts"
                             value={formData.posts}
                             onChange={handleChange}
                             placeholder="0"
-                            className="w-full bg-white/10 border border-white/20 rounded-xl px-3 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
+                            className="w-full bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-xl px-4 py-3 text-base text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
                         />
                     </div>
                 </div>
 
                 {/* Account Age */}
                 <div>
-                    <label className="block text-white font-semibold mb-2">Account Age (days)</label>
+                    <label className="block text-slate-800 dark:text-white font-semibold mb-2 ml-1 text-sm sm:text-base">Account Age (days)</label>
                     <input
                         type="number"
                         name="account_age_days"
                         value={formData.account_age_days}
                         onChange={handleChange}
                         placeholder="e.g., 365"
-                        className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
+                        className="w-full bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-xl px-4 py-3 sm:py-4 text-base text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
                     />
                 </div>
 
-                {/* Verified Status */}
-                <div>
-                    <label className="block text-white font-semibold mb-2">Verified Status</label>
-                    <select
-                        name="verified"
-                        value={formData.verified}
-                        onChange={handleChange}
-                        className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
-                    >
-                        <option value="">Unknown</option>
-                        <option value="yes">Yes (Blue Check)</option>
-                        <option value="no">No</option>
-                    </select>
-                </div>
-
-                {/* Visibility & Profile Pic */}
-                <div className="grid grid-cols-2 gap-4">
+                {/* Verified Status & Visibility */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                     <div>
-                        <label className="block text-white font-semibold mb-2">Visibility</label>
-                        <select
-                            name="visibility"
-                            value={formData.visibility}
-                            onChange={handleChange}
-                            className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
-                        >
-                            <option value="">Select</option>
-                            <option value="public">Public</option>
-                            <option value="private">Private</option>
-                        </select>
+                        <label className="block text-slate-800 dark:text-white font-semibold mb-2 ml-1 text-sm sm:text-base">Verified Status</label>
+                        <div className="relative">
+                            <select
+                                name="verified"
+                                value={formData.verified}
+                                onChange={handleChange}
+                                className="w-full bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-xl px-4 py-3 sm:py-4 text-base text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all appearance-none"
+                            >
+                                <option value="">Unknown</option>
+                                <option value="yes">Yes (Blue Check)</option>
+                                <option value="no">No</option>
+                            </select>
+                            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500 dark:text-white/50">
+                                <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                            </div>
+                        </div>
                     </div>
                     <div>
-                        <label className="block text-white font-semibold mb-2">Profile Picture</label>
+                        <label className="block text-slate-800 dark:text-white font-semibold mb-2 ml-1 text-sm sm:text-base">Visibility</label>
+                        <div className="relative">
+                            <select
+                                name="visibility"
+                                value={formData.visibility}
+                                onChange={handleChange}
+                                className="w-full bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-xl px-4 py-3 sm:py-4 text-base text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all appearance-none"
+                            >
+                                <option value="">Select</option>
+                                <option value="public">Public</option>
+                                <option value="private">Private</option>
+                            </select>
+                            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500 dark:text-white/50">
+                                <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Profile Pic & Bio Links - Grid on mobile too if small enough, but stack is safer */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                    <div>
+                        <label className="block text-slate-800 dark:text-white font-semibold mb-2 ml-1 text-sm sm:text-base">Profile Picture</label>
+                        <div className="relative">
+                            <select
+                                name="has_profile_pic"
+                                value={formData.has_profile_pic}
+                                onChange={handleChange}
+                                className="w-full bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-xl px-4 py-3 sm:py-4 text-base text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all appearance-none"
+                            >
+                                <option value="">Select</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                                <option value="suspicious">Suspicious</option>
+                            </select>
+                            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500 dark:text-white/50">
+                                <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label className="block text-slate-800 dark:text-white font-semibold mb-2 ml-1 text-sm sm:text-base">Bio Links</label>
+                        <div className="relative">
+                            <select
+                                name="bio_links"
+                                value={formData.bio_links}
+                                onChange={handleChange}
+                                className="w-full bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-xl px-4 py-3 sm:py-4 text-base text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all appearance-none"
+                            >
+                                <option value="">None</option>
+                                <option value="yes">Yes</option>
+                                <option value="suspicious">Suspicious</option>
+                                <option value="multiple">Multiple</option>
+                            </select>
+                            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500 dark:text-white/50">
+                                <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* DM Activity */}
+                <div>
+                    <label className="block text-slate-800 dark:text-white font-semibold mb-2 ml-1 text-sm sm:text-base">DM Activity</label>
+                    <div className="relative">
                         <select
-                            name="has_profile_pic"
-                            value={formData.has_profile_pic}
+                            name="dm_activity"
+                            value={formData.dm_activity}
                             onChange={handleChange}
-                            className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
+                            className="w-full bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-xl px-4 py-3 sm:py-4 text-base text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all appearance-none"
                         >
-                            <option value="">Select</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
+                            <option value="">Normal</option>
+                            <option value="unsolicited">Unsolicited</option>
                             <option value="suspicious">Suspicious</option>
                         </select>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500 dark:text-white/50">
+                            <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                        </div>
                     </div>
                 </div>
 
-                {/* Bio */}
+                {/* Bio Text */}
                 <div>
-                    <label className="block text-white font-semibold mb-2">Bio Text</label>
+                    <label className="block text-slate-800 dark:text-white font-semibold mb-2 ml-1 text-sm sm:text-base">Bio Text</label>
                     <textarea
                         name="bio_text"
                         value={formData.bio_text}
                         onChange={handleChange}
                         placeholder="Account bio content..."
                         rows={3}
-                        className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all resize-none"
+                        className="w-full bg-slate-50 dark:bg-white/10 border border-slate-200 dark:border-white/20 rounded-xl px-4 py-3 sm:py-4 text-base text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all resize-none"
                     />
-                </div>
-
-                {/* Bio Links & DM Activity */}
-                <div className="grid grid-cols-2 gap-4">
-                    <div>
-                        <label className="block text-white font-semibold mb-2">Bio Links</label>
-                        <select
-                            name="bio_links"
-                            value={formData.bio_links}
-                            onChange={handleChange}
-                            className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
-                        >
-                            <option value="">None</option>
-                            <option value="yes">Yes</option>
-                            <option value="suspicious">Suspicious</option>
-                            <option value="multiple">Multiple</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label className="block text-white font-semibold mb-2">DM Activity</label>
-                        <select
-                            name="dm_activity"
-                            value={formData.dm_activity}
-                            onChange={handleChange}
-                            className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
-                        >
-                            <option value="">Normal</option>
-                            <option value="unsolicited">Unsolicited</option>
-                            <option value="suspicious">Suspicious</option>
-                        </select>
-                    </div>
                 </div>
 
                 {/* Submit Button */}
                 <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02]"
+                    className="btn-touch w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-apple transform hover:scale-[1.02] mt-4"
                 >
                     🔍 Analyze Account Risk
                 </button>

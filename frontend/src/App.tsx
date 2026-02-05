@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -8,9 +9,14 @@ import AnalysisForm from './components/AnalysisForm'
 import ResultDashboard from './components/ResultDashboard'
 import Footer from './components/Footer'
 import LoadingSpinner from './components/LoadingSpinner'
+import Pricing from './pages/Pricing'
+import Documentation from './pages/Documentation'
+import APIReference from './pages/APIReference'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsOfService from './pages/TermsOfService'
 import { AnalysisResult } from './types'
 
-function App() {
+function HomePage() {
     const [result, setResult] = useState<AnalysisResult | null>(null)
     const [loading, setLoading] = useState(false)
     const [showForm, setShowForm] = useState(false)
@@ -37,9 +43,7 @@ function App() {
     }
 
     return (
-        <div className="min-h-screen">
-            <Navbar />
-
+        <>
             {!showForm && !result && (
                 <>
                     <Hero onGetStarted={handleStartAnalysis} />
@@ -70,11 +74,11 @@ function App() {
                                 />
                             )}
                             {!result && !loading && (
-                                <div className="glass rounded-3xl p-8 text-white text-center h-full flex items-center justify-center">
+                                <div className="glass rounded-3xl p-8 text-slate-900 dark:text-white text-center h-full flex items-center justify-center">
                                     <div>
                                         <div className="text-6xl mb-4">🛡️</div>
                                         <h3 className="text-2xl font-bold mb-2">Ready to Analyze</h3>
-                                        <p className="text-white/80">Fill out the form to get started with your Instagram account risk assessment</p>
+                                        <p className="text-slate-600 dark:text-white/80">Fill out the form to get started with your Instagram account risk assessment</p>
                                     </div>
                                 </div>
                             )}
@@ -82,9 +86,26 @@ function App() {
                     </div>
                 </div>
             )}
+        </>
+    )
+}
 
-            <Footer />
-        </div>
+function App() {
+    return (
+        <Router>
+            <div className="min-h-screen">
+                <Navbar />
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/pricing" element={<Pricing />} />
+                    <Route path="/documentation" element={<Documentation />} />
+                    <Route path="/api-reference" element={<APIReference />} />
+                    <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                    <Route path="/terms-of-service" element={<TermsOfService />} />
+                </Routes>
+                <Footer />
+            </div>
+        </Router>
     )
 }
 

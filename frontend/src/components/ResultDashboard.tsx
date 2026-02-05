@@ -9,15 +9,15 @@ export default function ResultDashboard({ result, onNewAnalysis }: ResultDashboa
 
 
     const getRiskBadgeColor = (level: string) => {
-        if (level === 'High Risk') return 'bg-red-500/20 text-red-300 border-red-500/50'
-        if (level === 'Moderate Risk') return 'bg-yellow-500/20 text-yellow-300 border-yellow-500/50'
-        return 'bg-green-500/20 text-green-300 border-green-500/50'
+        if (level === 'High Risk') return 'bg-red-500/20 text-red-600 dark:text-red-300 border-red-500/50'
+        if (level === 'Moderate Risk') return 'bg-yellow-500/20 text-yellow-600 dark:text-yellow-300 border-yellow-500/50'
+        return 'bg-green-500/20 text-green-600 dark:text-green-300 border-green-500/50'
     }
 
     const getConfidenceColor = (label: string) => {
-        if (label === 'High') return 'text-green-400'
-        if (label === 'Medium') return 'text-yellow-400'
-        return 'text-orange-400'
+        if (label === 'High') return 'text-green-600 dark:text-green-400'
+        if (label === 'Medium') return 'text-yellow-600 dark:text-yellow-400'
+        return 'text-orange-600 dark:text-orange-400'
     }
 
     // Calculate percentage for circular progress
@@ -25,14 +25,14 @@ export default function ResultDashboard({ result, onNewAnalysis }: ResultDashboa
     const offset = circumference - (result.risk_score / 100) * circumference
 
     return (
-        <div className="space-y-6 sticky top-24">
+        <div className="space-y-6 lg:sticky lg:top-24 animate-fadeIn">
             {/* Risk Score Card */}
-            <div className="glass rounded-3xl p-8 shadow-2xl">
-                <div className="flex items-center justify-between mb-6">
-                    <h3 className="text-2xl font-bold text-white">Risk Analysis</h3>
+            <div className="glass-mobile rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-2xl">
+                <div className="flex flex-col sm:flex-row items-center justify-between mb-6 sm:mb-8 gap-4">
+                    <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Risk Analysis</h3>
                     <button
                         onClick={onNewAnalysis}
-                        className="text-white/70 hover:text-white text-sm font-medium transition-colors"
+                        className="btn-touch px-4 py-2 bg-slate-100 dark:bg-white/10 rounded-xl text-slate-600 dark:text-white/90 text-sm font-medium hover:bg-slate-200 dark:hover:bg-white/20 transition-apple"
                     >
                         New Analysis →
                     </button>
@@ -40,20 +40,21 @@ export default function ResultDashboard({ result, onNewAnalysis }: ResultDashboa
 
                 {/* Circular Risk Score */}
                 <div className="flex flex-col items-center mb-8">
-                    <div className="relative w-48 h-48">
-                        <svg className="transform -rotate-90 w-48 h-48">
+                    <div className="relative w-40 h-40 sm:w-48 sm:h-48">
+                        <svg className="transform -rotate-90 w-full h-full">
                             <circle
-                                cx="96"
-                                cy="96"
-                                r="70"
-                                stroke="rgba(255,255,255,0.1)"
+                                cx="50%"
+                                cy="50%"
+                                r="45%"
+                                stroke="currentColor"
                                 strokeWidth="12"
                                 fill="none"
+                                className="text-slate-200 dark:text-white/10"
                             />
                             <circle
-                                cx="96"
-                                cy="96"
-                                r="70"
+                                cx="50%"
+                                cy="50%"
+                                r="45%"
                                 stroke="url(#gradient)"
                                 strokeWidth="12"
                                 fill="none"
@@ -70,26 +71,26 @@ export default function ResultDashboard({ result, onNewAnalysis }: ResultDashboa
                             </defs>
                         </svg>
                         <div className="absolute inset-0 flex flex-col items-center justify-center">
-                            <div className="text-5xl font-black text-white">{result.risk_score}</div>
-                            <div className="text-white/60 text-sm font-medium">Risk Score</div>
+                            <div className="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white">{result.risk_score}</div>
+                            <div className="text-slate-500 dark:text-white/60 text-xs sm:text-sm font-medium">Risk Score</div>
                         </div>
                     </div>
 
                     {/* Risk Level Badge */}
-                    <div className={`mt-6 px-6 py-3 rounded-full border-2 ${getRiskBadgeColor(result.risk_level)} font-bold text-lg`}>
+                    <div className={`mt-6 px-6 py-3 rounded-full border-2 ${getRiskBadgeColor(result.risk_level)} font-bold text-base sm:text-lg shadow-sm`}>
                         {result.risk_level}
                     </div>
                 </div>
 
                 {/* Username & Confidence */}
                 <div className="space-y-3 mb-6">
-                    <div className="flex items-center justify-between bg-white/5 rounded-xl p-4">
-                        <span className="text-white/70 font-medium">Username</span>
-                        <span className="text-white font-bold">@{result.username}</span>
+                    <div className="flex items-center justify-between bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 rounded-xl p-4">
+                        <span className="text-slate-600 dark:text-white/70 font-medium text-sm sm:text-base">Username</span>
+                        <span className="text-slate-900 dark:text-white font-bold text-sm sm:text-base">@{result.username}</span>
                     </div>
-                    <div className="flex items-center justify-between bg-white/5 rounded-xl p-4">
-                        <span className="text-white/70 font-medium">Confidence</span>
-                        <span className={`font-bold ${getConfidenceColor(result.confidence_label)}`}>
+                    <div className="flex items-center justify-between bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5 rounded-xl p-4">
+                        <span className="text-slate-600 dark:text-white/70 font-medium text-sm sm:text-base">Confidence</span>
+                        <span className={`font-bold text-sm sm:text-base ${getConfidenceColor(result.confidence_label)}`}>
                             {result.confidence}% ({result.confidence_label})
                         </span>
                     </div>
@@ -97,34 +98,40 @@ export default function ResultDashboard({ result, onNewAnalysis }: ResultDashboa
             </div>
 
             {/* Risk Indicators */}
-            <div className="glass rounded-3xl p-8 shadow-2xl">
-                <h4 className="text-xl font-bold text-white mb-4 flex items-center">
-                    <span className="text-2xl mr-2">⚠️</span>
+            <div className="glass-mobile rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-2xl">
+                <h4 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-4 sm:mb-6 flex items-center">
+                    <span className="text-xl sm:text-2xl mr-2">⚠️</span>
                     Risk Indicators
                 </h4>
                 <div className="space-y-3">
-                    {result.reasons.map((reason, index) => (
-                        <div
-                            key={index}
-                            className="bg-white/5 rounded-xl p-4 text-white/90 text-sm leading-relaxed border border-white/10 hover:bg-white/10 transition-colors"
-                        >
-                            {reason}
+                    {result.reasons.length > 0 ? (
+                        result.reasons.map((reason, index) => (
+                            <div
+                                key={index}
+                                className="bg-slate-50 dark:bg-white/5 rounded-xl p-4 text-slate-700 dark:text-white/90 text-sm sm:text-base leading-relaxed border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/10 transition-colors"
+                            >
+                                {reason}
+                            </div>
+                        ))
+                    ) : (
+                        <div className="text-center py-4 text-slate-500 dark:text-white/50 text-sm">
+                            No significant risk indicators found.
                         </div>
-                    ))}
+                    )}
                 </div>
             </div>
 
             {/* Recommendations */}
-            <div className="glass rounded-3xl p-8 shadow-2xl">
-                <h4 className="text-xl font-bold text-white mb-4 flex items-center">
-                    <span className="text-2xl mr-2">💡</span>
+            <div className="glass-mobile rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-2xl">
+                <h4 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-4 sm:mb-6 flex items-center">
+                    <span className="text-xl sm:text-2xl mr-2">💡</span>
                     Safety Recommendations
                 </h4>
                 <div className="space-y-3">
                     {result.recommendations.map((recommendation, index) => (
                         <div
                             key={index}
-                            className="bg-white/5 rounded-xl p-4 text-white/90 text-sm leading-relaxed border border-white/10 hover:bg-white/10 transition-colors"
+                            className="bg-slate-50 dark:bg-white/5 rounded-xl p-4 text-slate-700 dark:text-white/90 text-sm sm:text-base leading-relaxed border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/10 transition-colors"
                         >
                             {recommendation}
                         </div>
@@ -133,7 +140,7 @@ export default function ResultDashboard({ result, onNewAnalysis }: ResultDashboa
             </div>
 
             {/* Timestamp */}
-            <div className="text-center text-white/50 text-sm">
+            <div className="text-center text-slate-400 dark:text-white/50 text-xs sm:text-sm">
                 Analyzed at {new Date(result.timestamp).toLocaleString()}
             </div>
         </div>
