@@ -1,43 +1,45 @@
+import { Link } from 'react-router-dom'
+
 export default function Documentation() {
   const sections = [
     {
       title: "Getting Started",
       icon: "🚀",
       items: [
-        { name: "Quick Start Guide", desc: "Get up and running in 5 minutes" },
-        { name: "Installation", desc: "How to install and configure" },
-        { name: "Authentication", desc: "Setting up API authentication" },
-        { name: "First Analysis", desc: "Running your first risk analysis" }
+        { name: "Quick Start Guide", desc: "Get up and running in 5 minutes", link: "/documentation#quick-start" },
+        { name: "Installation", desc: "How to install and configure", link: "/documentation#installation" },
+        { name: "Authentication", desc: "Setting up API authentication", link: "/api-reference#auth" },
+        { name: "First Analysis", desc: "Running your first risk analysis", link: "/documentation#first-analysis" }
       ]
     },
     {
       title: "Core Concepts",
       icon: "📚",
       items: [
-        { name: "Risk Scoring", desc: "Understanding our risk assessment algorithm" },
-        { name: "Detection Factors", desc: "The 9+ factors we analyze" },
-        { name: "Confidence Levels", desc: "How we calculate confidence scores" },
-        { name: "Account Types", desc: "Different account classifications" }
+        { name: "Risk Scoring", desc: "Understanding our risk assessment algorithm", link: "/documentation#risk-scoring" },
+        { name: "Detection Factors", desc: "The 9+ factors we analyze", link: "/documentation#factors" },
+        { name: "Confidence Levels", desc: "How we calculate confidence scores", link: "/documentation#confidence" },
+        { name: "Account Types", desc: "Different account classifications", link: "/documentation#account-types" }
       ]
     },
     {
       title: "API Integration",
       icon: "🔌",
       items: [
-        { name: "REST API", desc: "Complete REST API documentation" },
-        { name: "Webhooks", desc: "Real-time notifications" },
-        { name: "Rate Limits", desc: "Understanding API quotas" },
-        { name: "Error Handling", desc: "Handling API errors gracefully" }
+        { name: "REST API", desc: "Complete REST API documentation", link: "/api-reference" },
+        { name: "Webhooks", desc: "Real-time notifications", link: "/api-reference#webhooks" },
+        { name: "Rate Limits", desc: "Understanding API quotas", link: "/api-reference#rate-limits" },
+        { name: "Error Handling", desc: "Handling API errors gracefully", link: "/api-reference#errors" }
       ]
     },
     {
       title: "Advanced Features",
       icon: "⚡",
       items: [
-        { name: "Batch Processing", desc: "Analyze multiple accounts at once" },
-        { name: "Custom Models", desc: "Training custom detection models" },
-        { name: "Integrations", desc: "Third-party integrations" },
-        { name: "Analytics Dashboard", desc: "Advanced reporting and insights" }
+        { name: "Batch Processing", desc: "Analyze multiple accounts at once", link: "/api-reference#batch" },
+        { name: "Custom Models", desc: "Training custom detection models", link: "/documentation#custom-models" },
+        { name: "Integrations", desc: "Third-party integrations", link: "/documentation#integrations" },
+        { name: "Analytics Dashboard", desc: "Advanced reporting and insights", link: "/documentation#analytics" }
       ]
     }
   ]
@@ -115,7 +117,7 @@ analyzeAccount('suspicious_account_123');`
               </div>
               <div className="space-y-3 sm:space-y-4">
                 {section.items.map((item, idx) => (
-                  <div key={idx} className="group cursor-pointer">
+                  <Link to={item.link} key={idx} className="group cursor-pointer block">
                     <div className="flex items-start p-3 sm:p-4 rounded-xl hover:bg-white/40 dark:hover:bg-white/10 transition-apple">
                       <svg className="w-4 h-4 sm:w-5 sm:h-5 text-purple-500 dark:text-pink-500 mr-2 sm:mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -127,7 +129,7 @@ analyzeAccount('suspicious_account_123');`
                         <p className="text-sm text-slate-600 dark:text-white/70">{item.desc}</p>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>
